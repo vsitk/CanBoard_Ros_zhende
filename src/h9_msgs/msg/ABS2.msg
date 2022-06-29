@@ -1,0 +1,5 @@
+uint8 Checksum
+float32 WheelSpeed_RL
+float32 WheelSpeed_RR
+float32 MasterCylinderPressure
+uint8 LiveCounter	

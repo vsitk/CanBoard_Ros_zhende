@@ -1,0 +1,7 @@
+uint8 Checksum
+float32 SteeringWheelAngle
+uint8 SteeringWheelAngleSign
+float32 SteeringWheelSpeed
+uint8 SteeringWheelSpeedSign
+uint8 SAS1_St
+uint8 LiveCounter
