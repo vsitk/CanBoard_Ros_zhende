@@ -1,5 +1,5 @@
 #include "socket.h"
-void Socket::Initi()
+void Socket::Init()
 {
     sockfd_ = -1;
     sockfd_ = socket(PF_INET, SOCK_DGRAM, 0);

@@ -48,7 +48,7 @@ target_link_libraries(h9_driver
   ${catkin_LIBRARIES}
 )
 
-add_executable (${PROJECT_NAME}_node src/can_driver.cpp src/socket.cpp)
+add_executable (${PROJECT_NAME}_node src/can_board_driver_node.cpp src/can_board_driver.cpp src/socket.cpp)
 add_dependencies(${PROJECT_NAME}_node 
   ${catkin_EXPORTED_TARGETS}
   asr408_driver

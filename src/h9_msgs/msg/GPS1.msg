@@ -1,6 +1,0 @@
-uint8 GPSTime_Hour
-uint8 GPSTime_Minute
-uint8 GPSTime_Second
-uint16 GPSTime_Year
-uint8 GPSTime_Month
-uint8 GPSTime_Day

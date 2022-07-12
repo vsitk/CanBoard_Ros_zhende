@@ -14,7 +14,7 @@
 #include <boost/thread.hpp>
 class Socket{
 public:
-    void Initi();
+    void Init();
     int sockfd_;
 
 };

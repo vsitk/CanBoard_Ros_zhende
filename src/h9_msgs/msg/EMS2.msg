@@ -1,7 +1,0 @@
-uint8 Checksum
-float32 IndicatedDriverTorq
-float32 ThrottlePosition
-float32 AccelerationPedalPosition
-float32 CalcAccelerationPedalPositi	
-uint8 KickdownReq
-uint8 LiveCounter

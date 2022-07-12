@@ -10,14 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
   DIRECTORY msg
   FILES
-  ABS1.msg
-  ABS2.msg
-  ABS3.msg
-  EMS2.msg
-  EMS3.msg
-  GPS1.msg
-  SAS1.msg
-  TCU3.msg
+  H9.msg
 )
 
 

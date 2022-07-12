@@ -2,6 +2,7 @@ uint8 Channel
 uint8 NofObjects
 uint16 MeasCounter
 uint8 InterfaceVersion
+uint8 ID
 float32 DistLong
 float32 DistLat	
 float32 VrelLong
