@@ -5,8 +5,8 @@ float32 WheelSpeed_RL
 float32 WheelSpeed_RR
 float32 VehicleSpeed
 float32 ThrottlePosition
-uint8 SteeringWheelAngle
-uint8 SteeringWheelSpeed
+float32 SteeringWheelAngle
+float32 SteeringWheelSpeed
 uint8 ActualGear
 uint8 BrakePedalSt
 

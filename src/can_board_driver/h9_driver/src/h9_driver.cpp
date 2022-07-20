@@ -1,6 +1,11 @@
 #include "h9_driver/h9_driver.h"
-h9_msgs::H9 H9_Driver::H9Message(){
-  h9_msg_.header.stamp = ros::Time::now();
+h9_msgs::H9 H9_Driver::H9Message(unsigned char* tbuff,uint16_t comp){
+  uint64_t timestamp_sec = (*(tbuff + comp + 4)) << 40 | (*(tbuff + comp + 5)) << 32 |
+                           (*(tbuff + comp + 6)) << 24 | (*(tbuff + comp + 7)) << 16 |
+                           (*(tbuff + comp + 8)) << 8 | (*(tbuff + comp + 9));
+  uint32_t timestamp_nsec = (*(tbuff + comp + 10)) << 24 | (*(tbuff + comp + 11)) << 16 |
+                            (*(tbuff + comp + 12)) << 8 | (*(tbuff + comp + 13));
+  h9_msg_.header.stamp = ros::Time(static_cast<double>(timestamp_sec + timestamp_nsec * 1e-9));
   return h9_msg_;}
 bool H9_Driver::GetState()
 {
@@ -46,10 +51,22 @@ void H9_Driver::H9_EnCode(unsigned char* tbuff,uint16_t comp)
     b_ems3_=true;
     break;
   case 0x0d0:
+  {
+    uint8_t nsign = (tbuff[comp+20]&0x80)>>7;
     h9_msg_.SteeringWheelAngle=((*(tbuff+comp+20)&0x7f)<<8|*(tbuff+comp+19))*0.04375;
+    if(nsign==1)
+    {
+      h9_msg_.SteeringWheelAngle *= -1;
+    }
+    nsign=(tbuff[comp+22]&0x80)>>7;
     h9_msg_.SteeringWheelSpeed=((*(tbuff+comp+22)&0x7f)<<8|*(tbuff+comp+21))*0.04375;
+    if(nsign==1)
+    {
+      h9_msg_.SteeringWheelSpeed *= -1;
+    }
     b_sas1_=true;
     break;
+  }
   case 0x0b4:
     h9_msg_.ActualGear=(*(tbuff+comp+21)&0xf0)>>4;
     b_tcu3_=true;

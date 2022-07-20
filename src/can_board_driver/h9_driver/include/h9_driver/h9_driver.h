@@ -5,7 +5,7 @@ class H9_Driver
 {
 public:
     void H9_EnCode(unsigned char* tbuff,uint16_t comp);
-    h9_msgs::H9 H9Message();
+    h9_msgs::H9 H9Message(unsigned char* tbuff,uint16_t comp);
     bool GetState();
     void ClearState();
 

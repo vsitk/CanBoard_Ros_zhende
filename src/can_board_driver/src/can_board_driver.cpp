@@ -35,12 +35,11 @@ void CanBoardDriver::ProcessCan()
         len = recvfrom(sock_.sockfd_, recbuff, sizeof(recbuff), 0, (sockaddr *)&sender_address, &sender_address_len);
         // if (len > 0)
         //     packet_nums_++;
-
+        
         while (index_ < 1500 && ros::ok())
         {
             uint32_t CanType = recbuff[index_ + 0] << 24 | recbuff[index_ + 1] << 16 | recbuff[index_ + 2] << 8 | recbuff[index_ + 3];
             // cout << "receive data. CanType: " << hex << CanType << " index_: " << dec << index_ << endl;
-
             if (CanType == 0xaa55aa55)
             {
                 channel = recbuff[index_ + 14];
@@ -83,7 +82,7 @@ void CanBoardDriver::Channel_h9(unsigned char *tbuff)
         h9_driver_.H9_EnCode(tbuff, index_);
         if (h9_driver_.GetState())
         {
-            h9_pub_.publish(h9_driver_.H9Message());
+            h9_pub_.publish(h9_driver_.H9Message(tbuff, index_));
             h9_driver_.ClearState();
         }
     }
